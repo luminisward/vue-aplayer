@@ -112,7 +112,7 @@
         position: relative;
         line-height: 32px;
         padding: 0 15px;
-        font-size: 12px;
+        font-size: 14px;
         border-top: 1px solid #e9e9e9;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -140,10 +140,9 @@
         .aplayer-list-cur {
           display: none;
           width: 3px;
-          height: 22px;
+          height: 100%;
           position: absolute;
           left: 0;
-          top: 5px;
           transition: background-color .3s;
         }
         .aplayer-list-index {
@@ -157,6 +156,7 @@
           flex-shrink: 0;
           color: #666;
           float: right;
+          margin-left: 1rem;
         }
       }
     }
