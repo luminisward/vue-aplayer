@@ -25,9 +25,6 @@
           <span class="aplayer-title">{{ currentMusic.title || 'Untitled' }}</span>
           <span class="aplayer-author">{{ currentMusic.artist || currentMusic.author || 'Unknown' }}</span>
         </div>
-        <slot name="display" :current-music="currentMusic" :play-stat="playStat">
-          <lyrics :current-music="currentMusic" :play-stat="playStat" v-if="shouldShowLrc" />
-        </slot>
         <controls
           :shuffle="shouldShuffle"
           :repeat="repeatMode"
@@ -63,7 +60,6 @@
   import Thumbnail from './components/aplayer-thumbnail.vue'
   import MusicList from './components/aplayer-list.vue'
   import Controls from './components/aplayer-controller.vue'
-  import Lyrics from './components/aplayer-lrc.vue'
   import { deprecatedProp, versionCompare, warn } from './utils'
 
   let versionBadgePrinted = false
@@ -95,7 +91,6 @@
       Thumbnail,
       Controls,
       MusicList,
-      Lyrics,
     },
     props: {
       music: {
@@ -327,8 +322,7 @@
         // sync shuffle, repeat
         internalShuffle: this.shuffle,
         internalRepeat: this.repeat,
-        // for shuffling
-        shuffledList: [],
+
       }
     },
     computed: {
@@ -435,6 +429,10 @@
         },
       },
 
+      // for shuffling
+      shuffledList () {
+        return this.list
+      },
 
       // since 1.5.0
       // sync shuffle, repeat
@@ -851,9 +849,6 @@
         console.log(`\n\n %c Vue-APlayer ${VERSION} %c vue-aplayer.js.org \n`, 'color: #fff; background:#41b883; padding:5px 0;', 'color: #fff; background: #35495e; padding:5px 0;')
         versionBadgePrinted = true
       }
-    },
-    created () {
-      this.shuffledList = this.getShuffledList()
     },
     mounted () {
       this.initAudio()

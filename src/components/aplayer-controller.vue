@@ -23,12 +23,6 @@
       />
       <icon-button
         class="aplayer-icon-mode"
-        icon="shuffle"
-        :class="{ 'inactive': !shuffle }"
-        @click.native="$emit('toggleshuffle')"
-      />
-      <icon-button
-        class="aplayer-icon-mode"
         :icon="repeat === 'repeat-one' ? 'repeat-one' : 'repeat-all'"
         :class="{ 'inactive': repeat === 'no-repeat'}"
         @click.native="$emit('nextmode')"
