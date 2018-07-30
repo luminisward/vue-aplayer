@@ -50,7 +50,6 @@
     computed: {
       listHeightStyle () {
         return {
-          height: `${33 * this.musicList.length - 1}px`,
           maxHeight: this.listmaxheight || ''
         }
       }
@@ -111,7 +110,6 @@
       }
       li {
         position: relative;
-        height: 32px;
         line-height: 32px;
         padding: 0 15px;
         font-size: 12px;
